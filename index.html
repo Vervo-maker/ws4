@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education - Template 13</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: white;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto auto;
+            min-height: 100vh;
+            gap: 40px;
+            background: white;
+        }
+
+        /* Training is everything */
+        .hero {
+            grid-column: 1;
+            grid-row: 1 / 3;
+            background: linear-gradient(135deg, #00d4d8 0%, #00b8c5 100%);
+            color: white;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .image-block {
+            overflow: hidden;
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-block.backpack {
+            grid-column: 2;
+            grid-row: 1;
+            background: linear-gradient(135deg, #b8f3f6 0%, #8ee9ed 100%);
+        }
+
+        .image-block.student-head {
+            grid-column: 3;
+            grid-row: 1;
+            background: linear-gradient(135deg, #ff8566 0%, #ff6b4a 100%);
+        }
+
+        .image-block.books-clock {
+            grid-column: 3;
+            grid-row: 2;
+            background: linear-gradient(135deg, #ff8566 0%, #ff6b4a 100%);
+        }
+
+        .image-block img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .image-block:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Education is the key */
+        .text-block {
+            grid-column: 2;
+            grid-row: 2;
+            background: linear-gradient(135deg, #f0fffe 0%, #d4f8f7 100%);
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .text-block h2 {
+            font-size: 2rem;
+            color: #00b8c5;
+            font-weight: 700;
+            line-height: 1.3;
+            text-transform: uppercase;
+        }
+
+        /* Profile section */
+        .profile {
+            grid-column: 1;
+            grid-row: 3;
+            overflow: hidden;
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+        }
+
+        .profile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile .placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        /* Content block */
+        .content-block {
+            grid-column: 2 / 4;
+            grid-row: 3;
+            background: linear-gradient(135deg, #ff8566 0%, #ff6b4a 100%);
+            color: white;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .content-block h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .content-block p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: white;
+            color: #ff6b4a;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Placeholder images with icons */
+        .placeholder {
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.6);
+            border-radius: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .image-block img,
+        .profile img {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                gap: 40px;
+            }
+
+            .hero {
+                grid-column: 1;
+                grid-row: 1;
+                padding: 40px 25px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .image-block.backpack {
+                grid-column: 1;
+                grid-row: 2;
+            }
+
+            .image-block.student-head {
+                grid-column: 1;
+                grid-row: 3;
+            }
+
+            .text-block {
+                grid-column: 1;
+                grid-row: 4;
+                padding: 40px 25px;
+            }
+
+            .text-block h2 {
+                font-size: 1.5rem;
+            }
+
+            .image-block.books-clock {
+                grid-column: 1;
+                grid-row: 5;
+            }
+
+            .profile {
+                grid-column: 1;
+                grid-row: 6;
+            }
+
+            .content-block {
+                grid-column: 1;
+                grid-row: 7;
+                padding: 40px 25px;
+            }
+
+            .content-block h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .text-block h2 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="hero">
+            <h1>Training is everything</h1>
+            <p>The paradox of education is precisely this - that as one begins to become conscious one begins to examine the society in which he is being educated.</p>
+        </section>
+
+        <section class="image-block backpack">
+            <div class="placeholder">🎒</div>
+            <img src="images/student-backpack.jpg" alt="Student backpack with apple">
+        </section>
+
+        <section class="image-block student-head">
+            <div class="placeholder">📚</div>
+            <img src="images/student-books-head.jpg" alt="Student balancing books">
+        </section>
+
+        <section class="text-block">
+            <h2>Education<br>is the key<br>to success</h2>
+        </section>
+
+        <section class="image-block books-clock">
+            <div class="placeholder">⏰</div>
+            <img src="images/books-clock.jpg" alt="Books with alarm clock"> 
+        </section>
+
+        <section class="profile">
+            <div class="placeholder" style="width: 100%; height: 100%; border-radius: 0;">👩‍🎓</div>
+            <img src="images/student-outdoor.jpg" alt="Student with books outdoors">
+        </section>
+
+        <section class="content-block">
+            <h3>Morbi eros lorem, imperdiet</h3>
+            <p>Consectetur vel lacus. Aenean gravida posuere elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis lacinia et urna et amet congue. Pellentesque vel leo et eros sollicitudin varius ac ac lacus. Aliquam viverra laoreet aliquet.</p>
+            <a href="#" class="btn">Read More</a>
+        </section>
+    </div>
+</body>
+</html>
